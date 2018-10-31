@@ -325,7 +325,7 @@ if __name__ == "__main__":
 
     parser.add_argument(
         '-m', '--merge', action='store_true',
-        help="Merge the ngrams individual years and books, to a single entry"
+        help="Merge the ngrams individual years and books to a single entry"
     )
 
     args = parser.parse_args()
@@ -350,6 +350,11 @@ if __name__ == "__main__":
         process_4gram(config)
     elif args.ngrams == '5':
         process_5gram(config)
-
-    print "Done."
-    sys.exit(1)
+    elif args.ngrams == 'all':
+        process_1gram(config)
+        process_2gram(config)
+        process_3gram(config)
+        process_4gram(config)
+        process_5gram(config)
+    else:
+        print "Unknows ngram", args.ngrams
